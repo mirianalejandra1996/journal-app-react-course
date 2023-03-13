@@ -1,4 +1,4 @@
-import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { FirebaseAuth } from "./config";
 
 // Here we are creating a new intance of our function
@@ -44,8 +44,6 @@ export const registerUserWithEmailPassword = async ({email, password, displayNam
 
         await updateProfile( FirebaseAuth.currentUser, {displayName})
 
-        // TODO: Actualizar el displayName en firebase
-
         return {
             ok: true,
             uid, photoURL, email, displayName
@@ -75,4 +73,9 @@ export const loginWithEmailPassword = async ({email, password}) => {
         console.log('error loginWithEmailpass', error.message)
         return { ok: false, errorMessage: error.message }
      }
+}
+
+export const logoutFirebase = async () => {
+    console.log('ocococ,')
+    return await signOut(FirebaseAuth)
 }
