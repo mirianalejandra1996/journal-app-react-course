@@ -29,13 +29,10 @@ export const LoginPage = () => {
   const onSubmit = (event) => {
     event.preventDefault()
 
-    console.log('onSubmittt', formState)
-
     dispatch(startLoginWithEmailPassword(formState))
   }
 
   const onGoogleSignIn = () => {
-    console.log('onGoogleSignIn')
     dispatch(startGoogleSignIn())
   }
 
