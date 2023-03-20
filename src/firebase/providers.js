@@ -38,8 +38,6 @@ export const registerUserWithEmailPassword = async ({email, password, displayNam
 
         const response = await createUserWithEmailAndPassword(FirebaseAuth, email, password)
 
-        console.log('response', response)
-
         const { uid, photoURL } = response.user
 
         await updateProfile( FirebaseAuth.currentUser, {displayName})
@@ -60,8 +58,6 @@ export const loginWithEmailPassword = async ({email, password}) => {
      try {
 
         const response = await signInWithEmailAndPassword(FirebaseAuth, email, password)
-
-        console.log('viendo el response', response)
         const { uid, photoURL, displayName } = response.user
 
         return {
@@ -70,12 +66,11 @@ export const loginWithEmailPassword = async ({email, password}) => {
         }
 
      } catch (error) {
-        console.log('error loginWithEmailpass', error.message)
+        console.log('error', error.message)
         return { ok: false, errorMessage: error.message }
      }
 }
 
 export const logoutFirebase = async () => {
-    console.log('ocococ,')
     return await signOut(FirebaseAuth)
 }

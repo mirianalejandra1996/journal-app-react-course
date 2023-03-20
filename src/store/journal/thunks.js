@@ -24,8 +24,6 @@ export const startNewNote = () => {
 
         newNote.id = newDoc.id
 
-        console.log('response', newDoc.id ,response)
-
         dispatch ( addNewEmptyNote(newNote))
         dispatch ( setActiveNote(newNote))
 
@@ -51,7 +49,6 @@ export const startSaveNote = () => {
 
         const { uid } = getState().auth;
         const { active: note } = getState().journal
-        console.log('viendo esto',  note)
 
         const noteToFireStore = { ...note };
         delete noteToFireStore.id;
@@ -85,11 +82,6 @@ export const startUploadingFiles = (files = []) => {
         const photosUrlPromises = fileList.map(async (file) => await fileUpload(file))
         const photosUrl = await Promise.all(photosUrlPromises)
 
-
-
-        console.log('photosUrlphotosUrlphotosUrl', photosUrl)
-
-
         dispatch(setPhotosToActiveNote(photosUrl))
         
     }
@@ -97,7 +89,6 @@ export const startUploadingFiles = (files = []) => {
 
 export const startDeletingNote = () => {
     return async (dispatch, getState) => {
-        console.log('startDeletingNote')
 
         dispatch(setSaving())
 

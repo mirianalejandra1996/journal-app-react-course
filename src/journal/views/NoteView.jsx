@@ -44,14 +44,10 @@ export const NoteView = () => {
   }, [messageSaved])
 
   const handleSaveNote = () => {
-    console.log("handleSaveNote", formState);
-
     dispatch(startSaveNote())
-    
   };
 
   const handleInputChange = ({target}) => {
-    console.log('handleInputChange', target.files)
 
     if(target.files.length === 0) return
 
